@@ -22,7 +22,6 @@ import { userService } from '../services/userService';
 import { postService } from '../services/postService';
 import type { User } from '../services/userService';
 import type { Post } from '../services/postService';
-import '../styles/components.css';
 
 type EntityType = 'user' | 'post';
 type Entity = User | Post;
@@ -235,7 +234,7 @@ export const ManagementPage: React.FC = () => {
         name="username"
         rules={{ required: '사용자명을 입력하세요' }}
         render={({ field }) => (
-          <FormItem className="form-group font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
+          <FormItem className="font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
             <FormLabel>{renderRequiredLabel('사용자명')}</FormLabel>
             <FormControl>
               <Input placeholder="사용자명을 입력하세요" {...field} />
@@ -249,7 +248,7 @@ export const ManagementPage: React.FC = () => {
         name="email"
         rules={{ required: '이메일을 입력하세요' }}
         render={({ field }) => (
-          <FormItem className="form-group font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
+          <FormItem className="font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
             <FormLabel>{renderRequiredLabel('이메일')}</FormLabel>
             <FormControl>
               <Input type="email" placeholder="이메일을 입력하세요" {...field} />
@@ -264,7 +263,7 @@ export const ManagementPage: React.FC = () => {
           name="role"
           rules={{ required: '역할을 선택하세요' }}
           render={({ field }) => (
-            <FormItem className="form-group font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
+            <FormItem className="font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
               <FormLabel>{renderRequiredLabel('역할')}</FormLabel>
               <FormControl>
                 <NativeSelect
@@ -286,7 +285,7 @@ export const ManagementPage: React.FC = () => {
           name="status"
           rules={{ required: '상태를 선택하세요' }}
           render={({ field }) => (
-            <FormItem className="form-group font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
+            <FormItem className="font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
               <FormLabel>{renderRequiredLabel('상태')}</FormLabel>
               <FormControl>
                 <NativeSelect
@@ -314,7 +313,7 @@ export const ManagementPage: React.FC = () => {
         name="title"
         rules={{ required: '제목을 입력하세요' }}
         render={({ field }) => (
-          <FormItem className="form-group font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
+          <FormItem className="font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
             <FormLabel>{renderRequiredLabel('제목')}</FormLabel>
             <FormControl>
               <Input placeholder="게시글 제목을 입력하세요" {...field} />
@@ -329,7 +328,7 @@ export const ManagementPage: React.FC = () => {
           name="author"
           rules={{ required: '작성자를 입력하세요' }}
           render={({ field }) => (
-            <FormItem className="form-group font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
+            <FormItem className="font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
               <FormLabel>{renderRequiredLabel('작성자')}</FormLabel>
               <FormControl>
                 <Input placeholder="작성자명" {...field} />
@@ -343,7 +342,7 @@ export const ManagementPage: React.FC = () => {
           name="category"
           rules={{ required: '카테고리를 선택하세요' }}
           render={({ field }) => (
-            <FormItem className="form-group font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
+            <FormItem className="font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
               <FormLabel>{renderRequiredLabel('카테고리')}</FormLabel>
               <FormControl>
                 <NativeSelect
@@ -365,7 +364,7 @@ export const ManagementPage: React.FC = () => {
         control={form.control}
         name="content"
         render={({ field }) => (
-          <FormItem className="form-group font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
+          <FormItem className="font-(--font-family-alt) space-y-(--space-form-label-margin-bottom)">
             <FormLabel>내용</FormLabel>
             <FormControl>
               <Textarea placeholder="게시글 내용을 입력하세요" rows={6} {...field} />
