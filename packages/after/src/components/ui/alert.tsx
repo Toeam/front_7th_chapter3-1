@@ -34,8 +34,6 @@ const alertVariants = cva(
   }
 )
 
-type AlertVariant = NonNullable<VariantProps<typeof alertVariants>["variant"]>
-
 interface AlertProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof alertVariants> {
@@ -49,7 +47,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     { className, variant = "default", title, onClose, showIcon = true, children, ...props },
     ref
   ) => {
-    const icon = iconMap[variant] ?? iconMap.default
+    const icon = variant ? iconMap[variant] : iconMap.default
 
     return (
       <div
@@ -59,18 +57,18 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         {...props}
       >
         {showIcon && (
-          <span className="alert-icon text-[var(--font-size-icon-lg)] leading-none select-none">
+          <span className="shrink-0 text-(length:--font-size-icon-lg) leading-none select-none">
             {icon}
           </span>
         )}
 
-        <div className="alert-content flex-1">
+        <div className="flex-1">
           {title && (
-            <div className="alert-title text-[length:var(--font-size-alert-title)] font-bold mb-[var(--space-alert-title-margin-bottom)]">
+            <div className="font-bold mb-(--space-alert-title-margin-bottom) text-(length:--font-size-alert-title)">
               {title}
             </div>
           )}
-          <div className="alert-body text-[length:var(--font-size-alert-body)] leading-(--line-height-normal)">
+          <div className="text-(length:--font-size-alert-body) leading-(--line-height-normal)">
             {children}
           </div>
         </div>
@@ -79,7 +77,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
           <button
             type="button"
             onClick={onClose}
-            className="alert-close text-[var(--color-text-muted)] hover:opacity-80"
+            className="ml-auto shrink-0 bg-transparent border-0 cursor-pointer text-(length:--font-size-icon-lg) px-(--space-alert-close-padding) text-(--color-text-muted) hover:opacity-80"
           >
             ×
           </button>

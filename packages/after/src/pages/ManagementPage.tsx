@@ -268,6 +268,7 @@ export const ManagementPage: React.FC = () => {
               <FormLabel>{renderRequiredLabel('역할')}</FormLabel>
               <FormControl>
                 <NativeSelect
+                  name={field.name}
                   value={field.value}
                   onChange={(event) => field.onChange(event.target.value)}
                 >
@@ -289,6 +290,7 @@ export const ManagementPage: React.FC = () => {
               <FormLabel>{renderRequiredLabel('상태')}</FormLabel>
               <FormControl>
                 <NativeSelect
+                  name={field.name}
                   value={field.value}
                   onChange={(event) => field.onChange(event.target.value)}
                 >
@@ -345,6 +347,7 @@ export const ManagementPage: React.FC = () => {
               <FormLabel>{renderRequiredLabel('카테고리')}</FormLabel>
               <FormControl>
                 <NativeSelect
+                  name={field.name}
                   value={field.value}
                   onChange={(event) => field.onChange(event.target.value)}
                 >

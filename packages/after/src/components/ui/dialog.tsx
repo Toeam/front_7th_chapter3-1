@@ -18,11 +18,13 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     style={{
+      position: 'fixed',
+      inset: 0,
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      zIndex: 1000,
       ...style,
     }}
     className={cn(
-      "modal-overlay fixed inset-0 z-[var(--z-modal)] bg-[rgba(0,0,0,0.5)]",
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
@@ -55,10 +57,12 @@ const DialogContent = React.forwardRef<
         ref={ref}
         {...rest}
         aria-describedby={ariaDescribedBy ?? undefined}
+        style={{
+          zIndex: 1001,
+        }}
         className={cn(
       "fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
       "mx-(--spacing-4)",
-          "z-[calc(var(--z-modal)+1)]",
           "bg-(--color-bg-modal) text-(--color-text-default) rounded-(--radius-4)",
           "shadow-(--shadow-modal) max-h-[90vh] w-full flex flex-col overflow-hidden",
           "font-(--font-family-alt) border border-(--color-border-card)",
@@ -94,7 +98,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn("text-[length:var(--font-size-heading-md)] font-medium text-(--color-text-modal-title)", className)}
+    className={cn("text-(length:--font-size-heading-md) font-medium text-(--color-text-modal-title)", className)}
     {...props}
   />
 ))
@@ -133,7 +137,7 @@ const DialogCloseButton = ({
     className={cn(
       "text-(--color-icon-secondary) transition-colors duration-150",
       "bg-transparent hover:bg-(--color-bg-modal-close-hover)",
-      "border-0 text-[28px] leading-none w-[var(--size-modal-close)] h-[var(--size-modal-close)] flex items-center justify-center rounded-full",
+      "border-0 text-[28px] leading-none w-(--size-modal-close) h-(--size-modal-close) flex items-center justify-center rounded-full",
       className
     )}
     {...props}

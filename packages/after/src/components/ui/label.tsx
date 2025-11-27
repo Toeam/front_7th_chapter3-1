@@ -12,8 +12,8 @@ function Label({
       data-slot="label"
       className={cn(
         "form-label",
-        "block mb-(--space-form-label-margin-bottom) p-0",
-        "text-(length:--font-size-label) leading-(--line-height-tight) font-(--font-weight-strong)",
+        "block mb-(--space-form-label-margin-bottom) p-0 m-0",
+        "text-(length:--font-size-label) leading-(--line-height-tight) font-bold",
         "text-(--color-text-label) font-(--font-family-base)",
         "select-none",
         "peer-disabled:cursor-not-allowed peer-disabled:opacity-(--opacity-control-disabled)",
