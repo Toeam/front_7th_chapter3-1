@@ -1,2 +1,3 @@
 export { Button } from './Button';
-export { Badge } from './Badge';
+// ui/badge.tsx로 대체 (atoms/Badge.tsx와 호환)
+export { Badge } from '../ui/badge';
