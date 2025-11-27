@@ -59,15 +59,15 @@ const TableBody = React.forwardRef<
   })
 
   return (
-    <tbody
-      ref={ref}
+  <tbody
+    ref={ref}
       className={cn(
         bodyVariants({ striped, hover }),
         "[&_tr:last-child_td]:border-0",
         className
       )}
-      {...props}
-    />
+    {...props}
+  />
   )
 })
 TableBody.displayName = "TableBody"
@@ -104,15 +104,15 @@ const TableRow = React.forwardRef<
   })
 
   return (
-    <tr
-      ref={ref}
-      className={cn(
+  <tr
+    ref={ref}
+    className={cn(
         "border-b border-[var(--color-border-table-cell)]",
         rowVariants({ bordered }),
-        className
-      )}
-      {...props}
-    />
+      className
+    )}
+    {...props}
+  />
   )
 })
 TableRow.displayName = "TableRow"
@@ -133,17 +133,17 @@ const TableHead = React.forwardRef<
   })
 
   return (
-    <th
-      ref={ref}
-      className={cn(
+  <th
+    ref={ref}
+    className={cn(
         // token 폴더의 토큰 기반 th 스타일
         "p-[var(--space-table-cell-padding)] text-left align-middle font-[var(--font-weight-medium)] text-[length:var(--font-size-table-heading)] text-[var(--color-text-table-header)] uppercase tracking-[var(--letter-spacing-table)] border-b-[2px] border-[var(--color-border-table-header)]",
         "[&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
         headVariants({ bordered }),
-        className
-      )}
-      {...props}
-    />
+      className
+    )}
+    {...props}
+  />
   )
 })
 TableHead.displayName = "TableHead"
@@ -164,17 +164,17 @@ const TableCell = React.forwardRef<
   })
 
   return (
-    <td
-      ref={ref}
-      className={cn(
+  <td
+    ref={ref}
+    className={cn(
         // token 폴더의 토큰 기반 td 스타일
         "p-[var(--space-table-cell-padding)] align-middle text-[var(--color-text-table-body)] border-b border-[var(--color-border-table-cell)]",
         "[&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
         cellVariants({ bordered }),
-        className
-      )}
-      {...props}
-    />
+      className
+    )}
+    {...props}
+  />
   )
 })
 TableCell.displayName = "TableCell"

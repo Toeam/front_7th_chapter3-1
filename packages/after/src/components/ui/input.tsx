@@ -7,7 +7,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
     return (
       <input
         type={type}
-      className={cn(
+        className={cn(
         "flex w-full border border-(--color-border-input) bg-(--color-bg-input) box-border",
           "px-(--space-form-control-padding-inline) py-(--space-form-control-padding-block)",
           "text-(length:--font-size-14) leading-(--line-height-normal) text-(--color-text-input)",

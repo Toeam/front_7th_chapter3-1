@@ -634,7 +634,7 @@ export const ManagementPage: React.FC = () => {
                 >
                   <div className="text-(length:--font-size-label) text-(--color-text-muted) mb-(--space-card-subtitle-margin-top)">
                     {card.label}
-                  </div>
+              </div>
                   <div
                     className={cn(
                       "text-[24px] font-bold",
@@ -642,8 +642,8 @@ export const ManagementPage: React.FC = () => {
                     )}
                   >
                     {typeof card.value === 'number' ? card.value.toLocaleString() : card.value}
-                  </div>
-                </div>
+              </div>
+              </div>
               ))}
             </div>
 
@@ -730,7 +730,7 @@ export const ManagementPage: React.FC = () => {
                       ID: {selectedItem.id} | 생성일: {selectedItem.createdAt}
                       {entityType === 'post' && ` | 조회수: ${(selectedItem as Post).views}`}
                     </Alert>
-                  )}
+            )}
 
                   {entityType === 'user'
                     ? renderUserFormFields(editForm)

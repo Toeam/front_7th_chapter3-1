@@ -12,7 +12,9 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy" : "gh-pages -d dist --dotfiles",
+    "predeploy" : "pnpm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -60,6 +62,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
     "eslint-plugin-storybook": "^0.9.0",
+    "gh-pages": "^6.3.0",
     "globals": "^16.4.0",
     "jsdom": "^26.0.2",
     "playwright": "^1.57.0",
@@ -70,5 +73,6 @@
     "typescript-eslint": "^8.45.0",
     "vite": "^7.1.7",
     "vitest": "^2.1.8"
-  }
+  },
+  "homepage": "https://toeam.github.io/front_7th_chapter3-1/"
 }
