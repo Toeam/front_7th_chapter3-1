@@ -91,6 +91,10 @@
   --font-size-20: 20px;
   --font-size-28: 28px;
 
+  /* Sizes */
+  --size-logo-square-md: 40px;
+  --size-avatar-md: 40px;
+
   /* Typography - Font weights */
   --font-weight-normal: normal;
   --font-weight-400: 400;

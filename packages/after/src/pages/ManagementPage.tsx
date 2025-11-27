@@ -2,7 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useForm, type UseFormReturn } from 'react-hook-form';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
-import { Alert, Modal } from '../components/organisms';
+import { Alert } from '../components/ui/alert';
+import {
+  Dialog,
+  DialogBody,
+  DialogCloseButton,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '../components/ui/dialog';
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '../components/ui/table';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '../components/ui/form';
 import { Input } from '../components/ui/input';
@@ -220,7 +229,7 @@ export const ManagementPage: React.FC = () => {
   );
 
   const renderUserFormFields = (form: UseFormReturn<any>) => (
-    <div className="space-y-(--space-form-group-gap)">
+    <div className="space-y-(--spacing-8)">
       <FormField
         control={form.control}
         name="username"
@@ -249,7 +258,7 @@ export const ManagementPage: React.FC = () => {
           </FormItem>
         )}
       />
-      <div className="grid grid-cols-2 gap-(--space-form-group-gap)">
+      <div className="grid grid-cols-2 gap-(--spacing-8)">
         <FormField
           control={form.control}
           name="role"
@@ -297,7 +306,7 @@ export const ManagementPage: React.FC = () => {
   );
 
   const renderPostFormFields = (form: UseFormReturn<any>) => (
-    <div className="space-y-(--space-form-group-gap)">
+    <div className="space-y-(--spacing-8)">
       <FormField
         control={form.control}
         name="title"
@@ -312,7 +321,7 @@ export const ManagementPage: React.FC = () => {
           </FormItem>
         )}
       />
-      <div className="grid grid-cols-2 gap-(--space-form-group-gap)">
+      <div className="grid grid-cols-2 gap-(--spacing-8)">
         <FormField
           control={form.control}
           name="author"
@@ -555,7 +564,7 @@ export const ManagementPage: React.FC = () => {
       "px-(--spacing-4) py-(--spacing-2) text-(length:--font-size-14) rounded-(--radius-3) mr-(--spacing-2)",
       "font-[var(--font-family-base)] border transition-colors",
       target === entityType
-        ? "font-bold border-(--color-primary-dark) bg-(--color-primary) text-white"
+        ? "font-bold border-(--color-primary-dark) bg-(--color-primary) text-(--color-text-inverse)"
         : "font-medium border-(--color-border-button-secondary) bg-(--color-neutral-100) text-(--color-neutral-800)"
     );
 
@@ -667,73 +676,76 @@ export const ManagementPage: React.FC = () => {
         </div>
 
       </div>
-
-        <Modal
-          isOpen={isCreateModalOpen}
-          onClose={handleCreateModalClose}
-          title={`새 ${entityType === 'user' ? '사용자' : '게시글'} 만들기`}
-          size="large"
-          showFooter
-          footerContent={
-            <>
+        <Dialog open={isCreateModalOpen} onOpenChange={(open) => !open && handleCreateModalClose()}>
+          <DialogContent size="large">
+            <DialogHeader>
+              <DialogTitle>
+                새 {entityType === 'user' ? '사용자' : '게시글'} 만들기
+              </DialogTitle>
+              <DialogCloseButton onClick={handleCreateModalClose} />
+            </DialogHeader>
+            <DialogBody>
+              <Form {...createForm}>
+                <form
+                  id="create-form"
+                  onSubmit={createForm.handleSubmit(onCreateSubmit)}
+                  className="space-y-(--spacing-8)"
+                >
+                  {entityType === 'user'
+                    ? renderUserFormFields(createForm)
+                    : renderPostFormFields(createForm)}
+                </form>
+              </Form>
+            </DialogBody>
+            <DialogFooter>
               <Button variant="secondary" size="md" onClick={handleCreateModalClose}>
                 취소
               </Button>
               <Button variant="primary" size="md" type="submit" form="create-form">
                 생성
               </Button>
-            </>
-          }
-        >
-          <Form {...createForm}>
-            <form
-              id="create-form"
-              onSubmit={createForm.handleSubmit(onCreateSubmit)}
-              className="space-y-(--space-form-group-gap)"
-            >
-              {entityType === 'user'
-                ? renderUserFormFields(createForm)
-                : renderPostFormFields(createForm)}
-            </form>
-          </Form>
-        </Modal>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
-        <Modal
-          isOpen={isEditModalOpen}
-          onClose={handleEditModalClose}
-          title={`${entityType === 'user' ? '사용자' : '게시글'} 수정`}
-          size="large"
-          showFooter
-          footerContent={
-            <>
+        <Dialog open={isEditModalOpen} onOpenChange={(open) => !open && handleEditModalClose()}>
+          <DialogContent size="large">
+            <DialogHeader>
+              <DialogTitle>
+                {entityType === 'user' ? '사용자' : '게시글'} 수정
+              </DialogTitle>
+              <DialogCloseButton onClick={handleEditModalClose} />
+            </DialogHeader>
+            <DialogBody>
+              <Form {...editForm}>
+                <form
+                  id="edit-form"
+                  onSubmit={editForm.handleSubmit(onEditSubmit)}
+                  className="space-y-(--spacing-8)"
+                >
+                  {selectedItem && (
+                    <Alert variant="info" className="mb-(--spacing-6)">
+                      ID: {selectedItem.id} | 생성일: {selectedItem.createdAt}
+                      {entityType === 'post' && ` | 조회수: ${(selectedItem as Post).views}`}
+                    </Alert>
+                  )}
+
+                  {entityType === 'user'
+                    ? renderUserFormFields(editForm)
+                    : renderPostFormFields(editForm)}
+                </form>
+              </Form>
+            </DialogBody>
+            <DialogFooter>
               <Button variant="secondary" size="md" onClick={handleEditModalClose}>
                 취소
               </Button>
               <Button variant="primary" size="md" type="submit" form="edit-form">
                 수정 완료
               </Button>
-            </>
-          }
-        >
-          <Form {...editForm}>
-            <form
-              id="edit-form"
-              onSubmit={editForm.handleSubmit(onEditSubmit)}
-              className="space-y-(--space-form-group-gap)"
-            >
-              {selectedItem && (
-                <Alert variant="info">
-                  ID: {selectedItem.id} | 생성일: {selectedItem.createdAt}
-                  {entityType === 'post' && ` | 조회수: ${(selectedItem as Post).views}`}
-                </Alert>
-              )}
-
-              {entityType === 'user'
-                ? renderUserFormFields(editForm)
-                : renderPostFormFields(editForm)}
-            </form>
-          </Form>
-        </Modal>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
     </div>
   );
 };
