@@ -5,31 +5,31 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  // primitive.css 토큰 기반 버튼 베이스 스타일 (components.css의 .btn 스타일과 동일)
+  "inline-block whitespace-nowrap border border-solid cursor-pointer font-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 font-[var(--font-family-base)] leading-[var(--line-height-normal)] rounded-[var(--radius-3)]",
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+        // primitive.css의 색상 토큰 사용
+        primary:
+          "border-[var(--color-primary-dark)] bg-[var(--color-primary)] text-[#ffffff] hover:bg-[var(--color-primary-dark)] focus-visible:ring-[var(--color-primary-dark)]",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border-[var(--color-neutral-250)] bg-[var(--color-neutral-100)] text-[var(--color-neutral-800)] hover:bg-[var(--color-neutral-200)] focus-visible:ring-[var(--color-neutral-300)]",
+        danger:
+          "border-[var(--color-danger-dark)] bg-[var(--color-danger)] text-[#ffffff] hover:bg-[var(--color-danger-dark)] focus-visible:ring-[var(--color-danger-dark)]",
+        success:
+          "border-[var(--color-success-dark)] bg-[var(--color-success)] text-[#ffffff] hover:bg-[var(--color-success-dark)] focus-visible:ring-[var(--color-success-dark)]",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
+        // primitive.css의 spacing 및 font-size 토큰 사용
+        sm: "py-[var(--spacing-2)] px-[var(--spacing-5)] text-[length:var(--font-size-13)]",
+        md: "py-[var(--spacing-4)] px-[var(--spacing-8)] text-[length:var(--font-size-14)]",
+        lg: "py-[var(--spacing-5)] px-[var(--spacing-9)] text-[length:var(--font-size-15)]",
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "primary",
+      size: "md",
     },
   }
 )
