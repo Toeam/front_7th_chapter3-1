@@ -10,19 +10,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        base: ['Arial', 'sans-serif'],
-        alt: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+        base: ['var(--font-family-base)', 'Arial', 'sans-serif'],
+        alt: ['var(--font-family-alt)', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
         // Base colors
         white: '#ffffff',
         black: '#000000',
 
-        // Primary palette
+        // Primary palette (직접 색상 지정)
         primary: {
-          DEFAULT: 'var(--color-primary)',
-          dark: 'var(--color-primary-dark)',
-          foreground: 'var(--color-primary-foreground)',
+          DEFAULT: '#1976d2',
+          dark: '#1565c0',
+          foreground: '#ffffff',
         },
 
         // Semantic colors
@@ -132,6 +132,22 @@ module.exports = {
         lg: 'var(--radius-lg)',
         xl: 'var(--radius-xl)',
         DEFAULT: 'var(--radius)',
+        '3': 'var(--radius-3)',
+      },
+      fontSize: {
+        '13': 'var(--font-size-13)',
+        '14': 'var(--font-size-14)',
+        '15': 'var(--font-size-15)',
+      },
+      spacing: {
+        'token-2': 'var(--spacing-2)',
+        'token-4': 'var(--spacing-4)',
+        'token-5': 'var(--spacing-5)',
+        'token-8': 'var(--spacing-8)',
+        'token-9': 'var(--spacing-9)',
+      },
+      lineHeight: {
+        normal: 'var(--line-height-normal)',
       },
       boxShadow: {
         // Card shadows
